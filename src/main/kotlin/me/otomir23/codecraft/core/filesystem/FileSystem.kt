@@ -24,7 +24,7 @@ class FileSystem(size: Int = 1024 * 1024): Directory("/") {
         val parts = path.split("/").filter { it.isNotBlank() }
         var current: Directory = this
         for (part in parts.slice(0 until parts.size - 1)) {
-            current = current.subdirectories.find { it.name == part } ?: return null
+            current = current.findDirectory(part) ?: return null
         }
         return current.find(parts.last())
     }
