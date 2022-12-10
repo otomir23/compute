@@ -4,9 +4,7 @@
   "package": "me.otomir23.codecraft.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
-  "client": [
-    "TitleScreenMixin"
-  ],
+  "client": [],
   "injectors": {
     "defaultRequire": 1
   }
