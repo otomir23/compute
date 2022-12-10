@@ -14,6 +14,7 @@ class File(name: String, parent: Directory? = null, content: ByteArray? = null) 
     private var content: ByteArray = ByteArray(0)
 
     init {
+        validate()
         if (content != null) write(content)
     }
 
@@ -34,7 +35,7 @@ class File(name: String, parent: Directory? = null, content: ByteArray? = null) 
      */
     fun write(content: ByteArray) {
         val neededSpace = content.size
-        if (fileSystem.freeSpace < neededSpace)
+        if (fileSystem.freeSpace + this.content.size < neededSpace)
             throw OutOfSpaceException(this)
         this.content = content
     }

@@ -23,13 +23,13 @@ open class Directory(name: String, parent: Directory? = null) : Element(name, pa
      * Subdirectories stored in this directory.
      */
     val subdirectories: List<Directory>
-        get() = _children.filterIsInstance<Directory>()
+        get() = children.filterIsInstance<Directory>()
 
     /**
      * Files stored in this directory.
      */
     val files: List<File>
-        get() = _children.filterIsInstance<File>()
+        get() = children.filterIsInstance<File>()
 
 
     /**
@@ -37,6 +37,10 @@ open class Directory(name: String, parent: Directory? = null) : Element(name, pa
      */
     val isEmpty: Boolean
         get() = _children.isEmpty()
+
+    init {
+        validate()
+    }
 
     /**
      * Update the directory's children list.

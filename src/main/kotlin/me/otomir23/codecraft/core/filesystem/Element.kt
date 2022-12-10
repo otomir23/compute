@@ -3,6 +3,8 @@ package me.otomir23.codecraft.core.filesystem
 /**
  * Abstract element of a virtual filesystem.
  *
+ * Every child class should call [validate] in their constructor!
+ *
  * @param name Name of the element
  * @param parent Parent directory of the element
  */
@@ -29,11 +31,15 @@ abstract class Element(name: String, parent: Directory? = null) {
      */
     var name: String = name
         set(value) {
-            if (this !is FileSystem && (value.isBlank() || value.contains(Regex("[/\\\\:*?\"<>|]"))))
-                throw IllegalElementNameException(this, value)
-            val sameNameElement = parent?.find(value)
-            if (sameNameElement != null && sameNameElement != this)
-                throw ElementAlreadyExistsException(this, value)
+            if (this !is FileSystem) {
+                if (value.isBlank() || value.contains(Regex("[/\\\\:*?\"<>|]")))
+                    throw IllegalElementNameException(this, value)
+                val sameNameElement = parent?.find(value)
+                if (sameNameElement != null && sameNameElement != this)
+                    throw ElementAlreadyExistsException(this, value)
+                if (fileSystem.freeSpace + name.length < value.length)
+                    throw OutOfSpaceException(this)
+            }
             field = value
         }
 
@@ -55,7 +61,19 @@ abstract class Element(name: String, parent: Directory? = null) {
             field?.sync(this)
         }
 
-    init {
+    /**
+     * Validate name and parent.
+     *
+     * EVERY CHILD MUST CALL THIS METHOD IN THEIR CONSTRUCTOR!
+     *
+     * @throws IllegalElementNameException If the name is invalid
+     * @throws ElementWithoutParentException If the element doesn't have a parent and is not a root directory
+     * @throws ElementAlreadyExistsException If the element already exists in the parent directory
+     * @throws OutOfSpaceException If there is not enough space to create the element
+     */
+    fun validate() {
+        // I wish I could use a constructor, but then children properties would be uninitialized,
+        // so I have to use this method instead.
         this.parent = parent
         this.name = name
     }

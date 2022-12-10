@@ -12,7 +12,7 @@ class FileSystem(size: Int = 1024 * 1024): Directory("/") {
      * Free space in the filesystem.
      */
     val freeSpace
-        get() = space - getAllFiles().sumOf { it.size }
+        get() = space - getAllFiles().sumOf { it.size + it.name.length }
 
     override val path: String
         get() = "/"

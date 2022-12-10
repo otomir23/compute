@@ -69,8 +69,8 @@ object Codecraft : ModInitializer {
             val largeFile = File(
                 "large",
                 fs3,
-                ("large".repeat(32)).toByteArray()
-            ) // It's 32 bytes long, so it should not fit into the filesystem
+                ("h".repeat(32)).toByteArray()
+            ) // It's 32 bytes long (+5 bytes in name), so it should not fit into the filesystem
         } catch (e: OutOfSpaceException) {
             LOGGER.error("Writing failed! (As expected)", e)
         }
@@ -98,6 +98,14 @@ object Codecraft : ModInitializer {
             val file6 = File("file")
             println(file6.path)
         } catch (e: ElementWithoutParentException) {
+            LOGGER.error("Creating file failed! (As expected)", e)
+        }
+
+        // 6. Creating a file with a name that is too long
+        try {
+            val fs7 = FileSystem(10)
+            val file7 = File("a".repeat(256), fs7)
+        } catch (e: OutOfSpaceException) {
             LOGGER.error("Creating file failed! (As expected)", e)
         }
 
