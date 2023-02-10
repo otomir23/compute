@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,on=true": {
+        "model": "codecraft:block/computer_on"
+    },
+    "facing=north,on=false": {
+        "model": "codecraft:block/computer"
+    },
+    "facing=south,on=true": {
+        "model": "codecraft:block/computer_on",
+        "y": 180
+    },
+    "facing=south,on=false": {
+        "model": "codecraft:block/computer",
+        "y": 180
+    },
+    "facing=west,on=true": {
+        "model": "codecraft:block/computer_on",
+        "y": 270
+    },
+    "facing=west,on=false": {
+        "model": "codecraft:block/computer",
+        "y": 270
+    },
+    "facing=east,on=true": {
+        "model": "codecraft:block/computer_on",
+        "y": 90
+    },
+    "facing=east,on=false": {
+        "model": "codecraft:block/computer",
+        "y": 90
+    }
+  }
+}
