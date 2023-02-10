@@ -2,10 +2,10 @@
   "schema_version": 1,
   "quilt_loader": {
     "group": "me.otomir23",
-    "id": "codecraft",
+    "id": "compute",
     "version": "${version}",
     "metadata": {
-      "name": "Codecraft (Working Title)",
+      "name": "Compute!",
       "description": "Computers? Robots? Drones? maybe idk",
       "contributors": {
         "otomir23": "Owner"
@@ -13,16 +13,16 @@
 			"license": "MIT",
       "contact": {
         "homepage": "https://otomir23.me/",
-        "issues": "https://github.com/otomir23/codecraft/issues",
-        "sources": "https://github.com/otomir23/codecraft"
+        "issues": "https://github.com/otomir23/compute/issues",
+        "sources": "https://github.com/otomir23/compute"
       },
-      "icon": "assets/codecraft/icon.png"
+      "icon": "assets/compute/icon.png"
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
       "init": {
 				"adapter": "kotlin",
-				"value": "me.otomir23.codecraft.Codecraft"
+				"value": "me.otomir23.compute.Compute"
 			}
 		},
     "depends": [
@@ -44,5 +44,5 @@
       }
     ]
   },
-  "mixin": "codecraft.mixins.json"
+  "mixin": "compute.mixins.json"
 }

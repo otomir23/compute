@@ -1,4 +1,4 @@
-package me.otomir23.codecraft.core.filesystem
+package me.otomir23.compute.core.filesystem
 
 /**
  * Base exception for errors that occur while executing operations on the virtual filesystem.

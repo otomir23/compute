@@ -1,6 +1,6 @@
-package me.otomir23.codecraft.blocks
+package me.otomir23.compute.blocks
 
-import me.otomir23.codecraft.Codecraft
+import me.otomir23.compute.Compute
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.ShapeContext
@@ -36,7 +36,7 @@ class ComputerBlock : Block(blockSettingsOf(
         val COMPUTER_BLOCK = ComputerBlock()
         val COMPUTER_BLOCK_ITEM = BlockItem(COMPUTER_BLOCK, itemSettingsOf(
             maxCount = 1,
-            group = Codecraft.ITEM_GROUP
+            group = Compute.ITEM_GROUP
         ))
     }
 

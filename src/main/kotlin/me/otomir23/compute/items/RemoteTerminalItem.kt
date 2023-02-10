@@ -1,7 +1,7 @@
-package me.otomir23.codecraft.items
+package me.otomir23.compute.items
 
-import me.otomir23.codecraft.Codecraft
-import me.otomir23.codecraft.blocks.ComputerBlock
+import me.otomir23.compute.Compute
+import me.otomir23.compute.blocks.ComputerBlock
 import net.minecraft.item.Item
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.text.Text
@@ -11,7 +11,7 @@ import org.quiltmc.qkl.library.items.itemSettingsOf
 class RemoteTerminalItem : Item(
     itemSettingsOf(
         maxCount = 1,
-        group = Codecraft.ITEM_GROUP
+        group = Compute.ITEM_GROUP
     )
 ) {
     companion object {

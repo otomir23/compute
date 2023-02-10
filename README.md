@@ -1,4 +1,4 @@
-# Codecraft
+# Compute!
 
 This mod adds computers, robots and drones to Minecraft. Or not. It's not finished yet.
 

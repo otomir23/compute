@@ -1,4 +1,4 @@
-package me.otomir23.codecraft.blocks
+package me.otomir23.compute.blocks
 
 import net.minecraft.block.MapColor
 import net.minecraft.block.piston.PistonBehavior

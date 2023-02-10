@@ -1,7 +1,7 @@
-package me.otomir23.codecraft
+package me.otomir23.compute
 
-import me.otomir23.codecraft.blocks.ComputerBlock
-import me.otomir23.codecraft.items.RemoteTerminalItem
+import me.otomir23.compute.blocks.ComputerBlock
+import me.otomir23.compute.items.RemoteTerminalItem
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
@@ -12,11 +12,11 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-object Codecraft : ModInitializer {
-    val LOGGER: Logger = LoggerFactory.getLogger("Codecraft")
+object Compute : ModInitializer {
+    val LOGGER: Logger = LoggerFactory.getLogger("Compute")
     val ITEM_GROUP: ItemGroup by lazy {
         itemGroupOf(
-            Identifier("codecraft", "general"),
+            Identifier("compute", "general"),
             iconSupplier = { ComputerBlock.COMPUTER_BLOCK_ITEM.defaultStack }
         )
     }

@@ -15,5 +15,4 @@ pluginManagement {
     }
 }
 
-// Working title
-rootProject.name = "codecraft"
+rootProject.name = "compute"

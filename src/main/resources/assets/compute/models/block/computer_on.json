@@ -2,11 +2,12 @@
 	"credit": "Made with Blockbench",
 	"parent": "minecraft:block/block",
 	"textures": {
-		"face": "codecraft:block/computer_face",
-		"side": "codecraft:block/computer_side",
-		"top": "codecraft:block/computer_top",
-		"particle": "codecraft:block/computer_bottom",
-		"bottom": "codecraft:block/computer_bottom"
+		"face": "compute:block/computer_face",
+		"side": "compute:block/computer_side",
+		"top": "compute:block/computer_top",
+		"particle": "compute:block/computer_bottom",
+		"bottom": "compute:block/computer_bottom",
+		"face_on": "compute:block/computer_face_on"
 	},
 	"elements": [
 		{
@@ -14,7 +15,7 @@
 			"from": [0, 0, 0],
 			"to": [16, 6, 16],
 			"faces": {
-				"north": {"uv": [0, 0, 16, 6], "texture": "#face"},
+				"north": {"uv": [0, 0, 16, 6], "texture": "#face_on"},
 				"east": {"uv": [0, 0, 16, 6], "texture": "#side"},
 				"south": {"uv": [0, 6, 16, 12], "texture": "#face"},
 				"west": {"uv": [0, 0, 16, 6], "texture": "#side"},

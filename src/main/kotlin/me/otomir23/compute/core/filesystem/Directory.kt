@@ -1,4 +1,4 @@
-package me.otomir23.codecraft.core.filesystem
+package me.otomir23.compute.core.filesystem
 
 /**
  * Representation of a directory in the virtual filesystem.
