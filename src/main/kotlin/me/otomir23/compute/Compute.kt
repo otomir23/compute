@@ -2,33 +2,29 @@ package me.otomir23.compute
 
 import me.otomir23.compute.blocks.ComputerBlock
 import me.otomir23.compute.items.RemoteTerminalItem
+import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder
 import net.minecraft.item.ItemGroup
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import org.quiltmc.loader.api.ModContainer
-import org.quiltmc.qkl.library.items.itemGroupOf
-import org.quiltmc.qkl.library.registry.registryScope
-import org.quiltmc.qsl.base.api.entrypoint.ModInitializer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
+
 object Compute : ModInitializer {
     val LOGGER: Logger = LoggerFactory.getLogger("Compute")
+    val MOD_ID = "compute"
     val ITEM_GROUP: ItemGroup by lazy {
-        itemGroupOf(
-            Identifier("compute", "general"),
-            iconSupplier = { ComputerBlock.COMPUTER_BLOCK_ITEM.defaultStack }
-        )
+        FabricItemGroupBuilder.create(Identifier(MOD_ID, "tab"))
+            .icon { ComputerBlock.COMPUTER_BLOCK_ITEM.defaultStack }
+            .build()
     }
 
-    override fun onInitialize(mod: ModContainer) {
-        registryScope(mod.metadata().id()) {
-            ComputerBlock.COMPUTER_BLOCK withPath "computer" toRegistry Registry.BLOCK
-            ComputerBlock.COMPUTER_BLOCK_ITEM withPath "computer" toRegistry Registry.ITEM
+    override fun onInitialize() {
+        Registry.register(Registry.BLOCK, Identifier(MOD_ID, "computer"), ComputerBlock.COMPUTER_BLOCK)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "computer"), ComputerBlock.COMPUTER_BLOCK_ITEM)
+        Registry.register(Registry.ITEM, Identifier(MOD_ID, "remote_terminal"), RemoteTerminalItem.REMOTE_TERMINAL_ITEM)
 
-            RemoteTerminalItem.REMOTE_TERMINAL_ITEM withPath "remote_terminal" toRegistry Registry.ITEM
-        }
-
-        LOGGER.info("{} successfully loaded!", mod.metadata()?.name())
+        LOGGER.info("Compute successfully loaded! {}", Int.MAX_VALUE)
     }
 }

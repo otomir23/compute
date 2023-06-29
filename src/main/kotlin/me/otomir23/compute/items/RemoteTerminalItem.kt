@@ -2,17 +2,16 @@ package me.otomir23.compute.items
 
 import me.otomir23.compute.Compute
 import me.otomir23.compute.blocks.ComputerBlock
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.item.Item
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.text.Text
 import net.minecraft.util.ActionResult
-import org.quiltmc.qkl.library.items.itemSettingsOf
 
 class RemoteTerminalItem : Item(
-    itemSettingsOf(
-        maxCount = 1,
-        group = Compute.ITEM_GROUP
-    )
+    FabricItemSettings()
+        .maxCount(1)
+        .group(Compute.ITEM_GROUP)
 ) {
     companion object {
         val REMOTE_TERMINAL_ITEM = RemoteTerminalItem()

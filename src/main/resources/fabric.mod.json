@@ -1,0 +1,28 @@
+{
+	"schemaVersion": 1,
+	"id": "compute",
+	"version": "${version}",
+	"name": "Compute!",
+	"description": "Computers? Robots? Drones? maybe idk",
+	"license": "MIT",
+	"authors": ["otomir23"],
+	"contact": {
+		"homepage": "https://otomir23.me/",
+		"issues": "https://github.com/otomir23/compute/issues",
+		"sources": "https://github.com/otomir23/compute"
+	},
+	"icon": "assets/compute/icon.png",
+	"entrypoints": {
+		"main": [{
+			"adapter": "kotlin",
+			"value": "me.otomir23.compute.Compute"
+		}]
+	},
+	"mixins": ["compute.mixins.json"],
+	"depends": {
+		"minecraft": "${mc_version}",
+		"fabricloader": ">=${loader_version}",
+		"fabric": ">=${fapi_version}",
+		"fabric-language-kotlin": ">=${flk_version}"
+	}
+}

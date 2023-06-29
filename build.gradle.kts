@@ -8,7 +8,7 @@ plugins {
 	`maven-publish`
 
 	alias(libs.plugins.kotlin)
-	alias(libs.plugins.quilt.loom)
+	alias(libs.plugins.fabric.loom)
 }
 
 val archives_base_name: String by project
@@ -22,6 +22,10 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven {
+		name = "Quilt"
+		url = uri("https://maven.quiltmc.org/repository/release")
+	}
 }
 
 // All the dependencies are declared at gradle/libs.version.toml and referenced with "libs.<id>"
@@ -34,25 +38,9 @@ dependencies {
 		}
 	)
 
-	// Replace the above line with the block below if you want to use Mojang mappings as your primary mappings, falling back on QM for parameters and Javadocs
-	/*
-	mappings(
-		loom.layered {
-			mappings(variantOf(libs.quilt.mappings) { classifier("intermediary-v2") })
-			officialMojangMappings()
-		}
-	)
-	*/
-
-	modImplementation(libs.quilt.loader)
-
-
-	// QSL is not a complete API; You will need Quilted Fabric API to fill in the gaps.
-	// Quilted Fabric API will automatically pull in the correct QSL version.
-	modImplementation(libs.qfapi)
-	// modImplementation(libs.bundles.qfapi) // If you wish to use the deprecated Fabric API modules
-
-	modImplementation(libs.qkl)
+	modImplementation(libs.fabric.loader)
+	modImplementation(libs.fabric.api)
+	modImplementation(libs.fabric.kotlin)
 }
 
 tasks {
@@ -72,14 +60,17 @@ tasks {
 
 	processResources {
 		filteringCharset = "UTF-8"
-		inputs.property("version", project.version)
 
-		filesMatching("quilt.mod.json") {
-			expand(
-				mapOf(
-					"version" to project.version
-				)
-			)
+		val properties: MutableMap<String, String> = mutableMapOf()
+		properties["version"] = project.version.toString()
+		properties["mc_version"] = libs.versions.minecraft.get()
+		properties["loader_version"] = libs.versions.loader.get()
+		properties["fapi_version"] = libs.versions.fapi.get()
+		properties["flk_version"] = libs.versions.flk.get()
+		properties.forEach { (k, v) -> inputs.property(k, v) }
+
+		filesMatching("fabric.mod.json") {
+			expand(properties)
 		}
 	}
 
